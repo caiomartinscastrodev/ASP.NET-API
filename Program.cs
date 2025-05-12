@@ -30,6 +30,8 @@ string audience = builder.Configuration["Jwt:Audience"] ?? "";
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionDb , ServerVersion.AutoDetect(connectionDb)));
 
+//Adding JWT Authentication
+
 builder.Services.AddAuthentication("Bearer").AddJwtBearer("Bearer" , options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
