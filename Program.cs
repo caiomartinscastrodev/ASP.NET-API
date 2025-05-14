@@ -23,6 +23,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 // Service
 builder.Services.AddScoped<TokenService>();
 
+// Settings
 string connectionDb = builder.Configuration.GetConnectionString("DefaultConnection") ?? "";
 string secret = builder.Configuration["Jwt:SecretKey"] ?? "";
 string issuer = builder.Configuration["Jwt:Issuer"] ?? "";
@@ -30,6 +31,7 @@ string audience = builder.Configuration["Jwt:Audience"] ?? "";
 
 // Adding DBContext
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionDb , ServerVersion.AutoDetect(connectionDb)));
+
 
 //Adding JWT Authentication
 
